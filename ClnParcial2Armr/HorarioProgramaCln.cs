@@ -23,7 +23,11 @@ namespace ClnParcial2Armr
                      .FirstOrDefault();
                 if (existe != null) throw new Exception("El horario del programa ya existe.");
 
-                    context.HorarioPrograma.Add(horarioPrograma);
+                // agregamos 
+
+                horarioPrograma.clasificacion = horarioPrograma.clasificacion;
+
+                context.HorarioPrograma.Add(horarioPrograma);
                 context.SaveChanges();
                 return horarioPrograma.id;
             }
@@ -41,6 +45,8 @@ namespace ClnParcial2Armr
                 registro.horaFin = horarioPrograma.horaFin;
                 registro.diaSemana = horarioPrograma.diaSemana;
                 registro.conductorPrincipal = horarioPrograma.conductorPrincipal;
+                //  nueva asignacion
+                registro.clasificacion = horarioPrograma.clasificacion;
                 registro.estado = horarioPrograma.estado;
 
                 context.SaveChanges();
@@ -62,7 +68,7 @@ namespace ClnParcial2Armr
             }
         }
 
-        public static List<paHorarioProgramaListar_Result> listar(string parametro)
+        public static List<paHorarioProgramaListar_Result1> listar(string parametro)
         {
             using (var context = new Parcial2ArmrEntities())
             {

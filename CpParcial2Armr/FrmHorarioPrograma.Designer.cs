@@ -54,6 +54,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.pnlAcciones = new System.Windows.Forms.Panel();
             this.gboDatos = new System.Windows.Forms.GroupBox();
+            this.lblClasificacion = new System.Windows.Forms.Label();
+            this.cboClasificacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.dgbLista.SuspendLayout();
             this.pnlAcciones.SuspendLayout();
@@ -114,6 +116,7 @@
             // 
             // cboCanal
             // 
+            this.cboCanal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCanal.FormattingEnabled = true;
             this.cboCanal.Location = new System.Drawing.Point(139, 39);
             this.cboCanal.Name = "cboCanal";
@@ -179,7 +182,7 @@
             // 
             this.lblDiaSemana.AutoSize = true;
             this.lblDiaSemana.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaSemana.Location = new System.Drawing.Point(420, 45);
+            this.lblDiaSemana.Location = new System.Drawing.Point(424, 44);
             this.lblDiaSemana.Name = "lblDiaSemana";
             this.lblDiaSemana.Size = new System.Drawing.Size(140, 18);
             this.lblDiaSemana.TabIndex = 13;
@@ -187,6 +190,7 @@
             // 
             // cboDiaSemana
             // 
+            this.cboDiaSemana.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDiaSemana.FormattingEnabled = true;
             this.cboDiaSemana.Location = new System.Drawing.Point(637, 44);
             this.cboDiaSemana.Name = "cboDiaSemana";
@@ -331,6 +335,8 @@
             // 
             // gboDatos
             // 
+            this.gboDatos.Controls.Add(this.cboClasificacion);
+            this.gboDatos.Controls.Add(this.lblClasificacion);
             this.gboDatos.Controls.Add(this.btnCancelar);
             this.gboDatos.Controls.Add(this.cboCanal);
             this.gboDatos.Controls.Add(this.lblCanal);
@@ -351,6 +357,25 @@
             this.gboDatos.TabIndex = 25;
             this.gboDatos.TabStop = false;
             this.gboDatos.Text = "DATOS";
+            // 
+            // lblClasificacion
+            // 
+            this.lblClasificacion.AutoSize = true;
+            this.lblClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClasificacion.Location = new System.Drawing.Point(424, 126);
+            this.lblClasificacion.Name = "lblClasificacion";
+            this.lblClasificacion.Size = new System.Drawing.Size(136, 18);
+            this.lblClasificacion.TabIndex = 21;
+            this.lblClasificacion.Text = "CLASIFICACION:";
+            // 
+            // cboClasificacion
+            // 
+            this.cboClasificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClasificacion.FormattingEnabled = true;
+            this.cboClasificacion.Location = new System.Drawing.Point(637, 125);
+            this.cboClasificacion.Name = "cboClasificacion";
+            this.cboClasificacion.Size = new System.Drawing.Size(137, 24);
+            this.cboClasificacion.TabIndex = 22;
             // 
             // FrmHorarioPrograma
             // 
@@ -408,6 +433,8 @@
         private System.Windows.Forms.GroupBox dgbLista;
         private System.Windows.Forms.Panel pnlAcciones;
         private System.Windows.Forms.GroupBox gboDatos;
+        private System.Windows.Forms.ComboBox cboClasificacion;
+        private System.Windows.Forms.Label lblClasificacion;
     }
 }
 

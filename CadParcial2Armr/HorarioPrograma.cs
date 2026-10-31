@@ -22,6 +22,7 @@ namespace CadParcial2Armr
         public string diaSemana { get; set; }
         public string conductorPrincipal { get; set; }
         public short estado { get; set; }
+        public string clasificacion { get; set; }
     
         public virtual Canal Canal { get; set; }
     }

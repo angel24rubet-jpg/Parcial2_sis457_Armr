@@ -32,6 +32,7 @@ namespace CpParcial2Armr
             dgvLista.Columns["estado"].HeaderText = "ESTADO";
             dgvLista.Columns["diaSemana"].HeaderText = "DIA SEMANA";
             dgvLista.Columns["conductorPrincipal"].HeaderText = "CONDUCTOR PRINCIPAL";
+            dgvLista.Columns["clasificacion"].HeaderText = "CLASIFICACIÓN";
 
             if (lista.Count > 0) dgvLista.CurrentCell = dgvLista.Rows[0].Cells["canal"];
 
@@ -60,13 +61,23 @@ namespace CpParcial2Armr
 
             cboDiaSemana.SelectedIndex = -1;
         }
-
+        // nuevo metodo 
+        private void cargarClasificacion()
+        {
+            cboClasificacion.Items.Clear();
+            cboClasificacion.Items.Add("ATP");
+            cboClasificacion.Items.Add("10+");
+            cboClasificacion.Items.Add("13+");
+            cboClasificacion.Items.Add("18+");
+            cboClasificacion.SelectedIndex = 0;
+        }
         private void FrmHorarioPrograma_Load(object sender, EventArgs e)
         {
             Size = new Size(1072,536);
             listar();
             cargarCanal();
             cargarDias();
+            cargarClasificacion();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -91,6 +102,7 @@ namespace CpParcial2Armr
             dtpHoraFin.Value = DateTime.Today;
             cboDiaSemana.SelectedIndex = -1;
             txtConductorPrincipal.Clear();
+            cboClasificacion.SelectedIndex = 0;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -121,6 +133,7 @@ namespace CpParcial2Armr
             dtpHoraFin.Value = DateTime.Today.Add(registro.horaFin);
             cboDiaSemana.Text = registro.diaSemana;
             txtConductorPrincipal.Text = registro.conductorPrincipal;
+            cboClasificacion.Text = registro.clasificacion;
 
             Size = new Size(1072, 838);
             pnlAcciones.Enabled = false;
@@ -160,6 +173,7 @@ namespace CpParcial2Armr
                 horarioPrograma.horaFin = dtpHoraFin.Value.TimeOfDay;
                 horarioPrograma.diaSemana = cboDiaSemana.Text;
                 horarioPrograma.conductorPrincipal = txtConductorPrincipal.Text.Trim();
+                horarioPrograma.clasificacion = cboClasificacion.Text;
                 horarioPrograma.estado = 1;
 
                 if (esNuevo)

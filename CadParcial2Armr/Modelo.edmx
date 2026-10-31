@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Parcial2ArmrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Parcial2ArmrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Canal">
           <Key>
             <PropertyRef Name="id" />
@@ -26,6 +26,7 @@
           <Property Name="diaSemana" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="conductorPrincipal" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="estado" Type="smallint" Nullable="false" />
+          <Property Name="clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_HorarioPrograma_Canal">
           <End Role="Canal" Type="Self.Canal" Multiplicity="1" />
@@ -50,8 +51,7 @@
             <End Role="HorarioPrograma" EntitySet="HorarioPrograma" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Parcial2ArmrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -78,6 +78,7 @@
           <Property Name="conductorPrincipal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Canal" Relationship="Self.FK_HorarioPrograma_Canal" FromRole="HorarioPrograma" ToRole="Canal" />
+          <Property Name="clasificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_HorarioPrograma_Canal">
           <End Role="Canal" Type="Self.Canal" Multiplicity="1" />
@@ -98,8 +99,8 @@
             <End Role="Canal" EntitySet="Canal" />
             <End Role="HorarioPrograma" EntitySet="HorarioPrograma" />
           </AssociationSet>
-          <FunctionImport Name="paHorarioProgramaListar" ReturnType="Collection(Parcial2ArmrModel.paHorarioProgramaListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <FunctionImport Name="paHorarioProgramaListar" ReturnType="Collection(Parcial2ArmrModel.paHorarioProgramaListar_Result1)">
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="paHorarioProgramaListar_Result">
@@ -111,6 +112,18 @@
           <Property Type="Time" Name="horaFin" Nullable="false" />
           <Property Type="String" Name="diaSemana" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="conductorPrincipal" Nullable="false" MaxLength="100" />
+          <Property Type="Int16" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="paHorarioProgramaListar_Result1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idCanal" Nullable="false" />
+          <Property Type="String" Name="canal" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="100" />
+          <Property Type="Time" Name="horaInicio" Nullable="false" />
+          <Property Type="Time" Name="horaFin" Nullable="false" />
+          <Property Type="String" Name="diaSemana" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="conductorPrincipal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="clasificacion" Nullable="false" MaxLength="10" />
           <Property Type="Int16" Name="estado" Nullable="false" />
         </ComplexType>
       </Schema>
@@ -132,6 +145,7 @@
           <EntitySetMapping Name="HorarioPrograma">
             <EntityTypeMapping TypeName="Parcial2ArmrModel.HorarioPrograma">
               <MappingFragment StoreEntitySet="HorarioPrograma">
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idCanal" ColumnName="idCanal" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
@@ -144,8 +158,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="paHorarioProgramaListar" FunctionName="Parcial2ArmrModel.Store.paHorarioProgramaListar">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Parcial2ArmrModel.paHorarioProgramaListar_Result">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Parcial2ArmrModel.paHorarioProgramaListar_Result1">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idCanal" ColumnName="idCanal" />
                 <ScalarProperty Name="canal" ColumnName="canal" />
@@ -154,6 +168,7 @@
                 <ScalarProperty Name="horaFin" ColumnName="horaFin" />
                 <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
                 <ScalarProperty Name="conductorPrincipal" ColumnName="conductorPrincipal" />
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>

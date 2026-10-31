@@ -30,13 +30,13 @@ namespace CadParcial2Armr
         public virtual DbSet<Canal> Canal { get; set; }
         public virtual DbSet<HorarioPrograma> HorarioPrograma { get; set; }
     
-        public virtual ObjectResult<paHorarioProgramaListar_Result> paHorarioProgramaListar(string parametro)
+        public virtual ObjectResult<paHorarioProgramaListar_Result1> paHorarioProgramaListar(string parametro)
         {
             var parametroParameter = parametro != null ?
                 new ObjectParameter("parametro", parametro) :
                 new ObjectParameter("parametro", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paHorarioProgramaListar_Result>("paHorarioProgramaListar", parametroParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paHorarioProgramaListar_Result1>("paHorarioProgramaListar", parametroParameter);
         }
     }
 }
