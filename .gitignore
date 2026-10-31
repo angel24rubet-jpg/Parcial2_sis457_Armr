@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+# Carpetas de compilacion
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+
+# Paquetes temporales
+packages/
+
+# Archivos temporales
+*.tmp
+*.log
